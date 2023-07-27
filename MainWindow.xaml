@@ -67,42 +67,43 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <Grid HorizontalAlignment="Left" Background="#FF242F3D" Margin="0,0,0,425" Width="322" >
-            <Button VerticalAlignment="Stretch" BorderThickness="0"
-                    Content="✕" Foreground="#FF7C7C7C" Background="Transparent" Width="25" Margin="297,0,0,0" Style="{DynamicResource UpsideButtons}" Click="Button_Click"
+        <Grid HorizontalAlignment="Left" Background="#000000" Margin="0,0,0,425" Width="322" >
+            <Button x:Name="CloseAppButton" VerticalAlignment="Stretch" BorderThickness="0"
+                    Content="✕" Foreground="#FFFFFF" Background="Transparent" Width="25" Margin="297,0,0,0" Style="{DynamicResource UpsideButtons}" Click="CloseAppButton_Click"
                     />
-            <Button VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="25" BorderThickness="0" 
-                    Margin="0,0,27,0" Content="_" Foreground="#FF7C7C7C" Background="Transparent" Style="{DynamicResource UpsideButtons}" Click="Button_Click_1"
+            <Button x:Name="MinimizeAppButton" VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="25" BorderThickness="0" 
+                    Margin="0,0,27,0" Content="—" Foreground="#FFFFFF" Background="Transparent" Style="{DynamicResource UpsideButtons}" Click="MinimizeAppButton_Click"
                     />
         </Grid>
         <Grid VerticalAlignment="Stretch" Margin="0,25,0,0" Background="#0e1621" HorizontalAlignment="Left" Width="322">
-            <Grid HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="300" Background="#17212b" Margin="10,5,0,0">
-                <ComboBox HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="280" x:Name="toCombo"/>
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#121212" Margin="0">
+                <ComboBox HorizontalAlignment="Stretch" Margin="10" VerticalAlignment="Top"  x:Name="toCombo"
+                          BorderThickness="0"/>
                 <Button x:Name="bConvert" Content="Convert" HorizontalAlignment="Left" 
                         Margin="10,43,0,0" VerticalAlignment="Top" Width="129" Click="bConvert_Click" Height="48"
-                        BorderThickness="0" Foreground="White" Background="#FF5D5D5D" FontSize="20">
+                        BorderThickness="0" Foreground="White" Background="#7270b0" FontSize="20">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="8"/>
+                            <Setter Property="CornerRadius" Value="3"/>
                         </Style>
                     </Button.Resources>
                 </Button>
                 <Label Content="+" HorizontalAlignment="Left" Margin="134,134,0,0" VerticalAlignment="Top"
                        FontSize="30" Foreground="White"/>
-                <Rectangle x:Name="RDropZone" Stroke="White" Margin="10,96,10,0" RadiusX="10" RadiusY="10"
+                <Rectangle x:Name="ImageDropZone" Stroke="White" Margin="10,96,10,0" RadiusX="10" RadiusY="10"
                            StrokeDashArray="10" StrokeThickness="3" Fill="#4CA2A2A2" Drop="RDropZone_Drop"
                            AllowDrop="true" Height="129" VerticalAlignment="Top"/>
-                <TextBlock x:Name="filesBlock" HorizontalAlignment="Left" Margin="10,230,0,0" 
-                       TextWrapping="Wrap" VerticalAlignment="Top" Height="184" Width="280" 
+                <TextBlock x:Name="filesBlock" HorizontalAlignment="Stretch" Margin="0,220,0,0" 
+                       TextWrapping="Wrap" VerticalAlignment="Center" Height="184" Width="280" 
                        Foreground="White"
                        />
-                <Button x:Name="bClear" Content="Clear" HorizontalAlignment="Left" Margin="166,43,0,0"
+                <Button x:Name="bClear" Content="Clear" HorizontalAlignment="Right" Margin="0,43,10,0"
                         VerticalAlignment="Top" Width="124" Height="48" Click="bClear_Click"
-                        BorderThickness="0" Foreground="White" Background="#FF4E7E85" FontSize="20"
+                        BorderThickness="0" Foreground="White" Background="#CF6679" FontSize="20"
                         >
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="8"/>
+                            <Setter Property="CornerRadius" Value="3"/>
                         </Style>
                     </Button.Resources>
                 </Button>

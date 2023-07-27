@@ -19,12 +19,7 @@ namespace photo_converter
 {
     public partial class MainWindow : Window
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-            toCombo.ItemsSource = formats_list; // changing itemsSource to list 
-        }
-        List<ImageFormat> formats_list = new List<ImageFormat>() // list of all formats of photos
+        List<ImageFormat> formatsList = new List<ImageFormat>() // list of all formats of photos
         {
             ImageFormat.Bmp,
             ImageFormat.Jpeg,
@@ -34,24 +29,31 @@ namespace photo_converter
             ImageFormat.Emf,
             ImageFormat.Gif
         };
+
+        public MainWindow()
+        {
+            InitializeComponent();
+            toCombo.ItemsSource = formatsList; // changing itemsSource to list 
+        }
+        
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) // move window
         {
             this.DragMove(); // 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e) // Exit button
+        private void CloseAppButton_Click(object sender, RoutedEventArgs e) // Exit button
         {
             Application.Current.Shutdown();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)  // Minimize app
+        private void MinimizeAppButton_Click(object sender, RoutedEventArgs e)  // Minimize app
         {
             this.WindowState = WindowState.Minimized;
         }
 
         private void bConvert_Click(object sender, RoutedEventArgs e) // convert button
         {
-            var selected_format = Formats_To(formats_list[toCombo.SelectedIndex]);
+            var selectedFormat = FormatTo(formatsList[toCombo.SelectedIndex]);
             if (files != null)
             {
                 FileInfo file;
@@ -61,7 +63,7 @@ namespace photo_converter
                     {
                         var opened_file = (Bitmap)Image.FromFile(files[i]);
                         file = new FileInfo(files[i]);
-                        opened_file.Save(AppDomain.CurrentDomain.BaseDirectory + $"{file.Name}." + selected_format.ToString(), selected_format);
+                        opened_file.Save(AppDomain.CurrentDomain.BaseDirectory + $"{file.Name}." + selectedFormat.ToString(), selectedFormat);
                     }
                 });
             }
@@ -72,7 +74,7 @@ namespace photo_converter
         /// </summary>
         /// <param name="format"></param>
         /// <returns>Image format</returns>
-        private ImageFormat Formats_To(ImageFormat format) 
+        private ImageFormat FormatTo(ImageFormat format) 
         {
             if (format == ImageFormat.Png)
                 return ImageFormat.Png;
